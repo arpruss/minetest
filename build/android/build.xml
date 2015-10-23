@@ -7,6 +7,7 @@
 		<isset property="env.ANDROID_HOME" />
 	</condition>
 	<loadproperties srcFile="project.properties" />
+	<loadproperties srcFile="secure.properties" />
 	<fail
 		message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
 		unless="sdk.dir"
