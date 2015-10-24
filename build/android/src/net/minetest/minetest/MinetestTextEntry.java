@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
+import android.view.inputmethod.InputMethodManager;
+import android.view.WindowManager;
 
 public class MinetestTextEntry extends Activity {
 	public AlertDialog mTextInputDialog;
@@ -35,6 +38,7 @@ public class MinetestTextEntry extends Activity {
 		mTextInputWidget.setHint(hint);
 		mTextInputWidget.setText(current);
 		mTextInputWidget.setMinWidth(300);
+
 		if (editType == SingleLinePasswordInput) {
 			mTextInputWidget.setInputType(InputType.TYPE_CLASS_TEXT | 
 					InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -48,10 +52,13 @@ public class MinetestTextEntry extends Activity {
 		
 		if (editType == MultiLineTextInput) {
 			builder.setPositiveButton(acceptButton, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) 
-				{ pushResult(mTextInputWidget.getText().toString()); }
-				});
+				public void onClick(DialogInterface dialog, int whichButton) { 
+					pushResult(mTextInputWidget.getText().toString());
+				}
+			});
 		}
+		
+
 		
 		builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
 			public void onCancel(DialogInterface dialog) {
@@ -72,10 +79,23 @@ public class MinetestTextEntry extends Activity {
 		});
 		
 		mTextInputDialog = builder.create();
+		mTextInputDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+			@Override
+			public void onShow(DialogInterface dialog) {
+				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.showSoftInput(mTextInputWidget, InputMethodManager.SHOW_FORCED);
+			}
+		});
 		mTextInputDialog.show();
+	}
+
+	public void hideKeyboard() {
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(mTextInputWidget.getWindowToken(), 0);
 	}
 	
 	public void pushResult(String text) {
+		hideKeyboard();
 		Intent resultData = new Intent();
 		resultData.putExtra("text", text);
 		setResult(Activity.RESULT_OK,resultData);
@@ -84,6 +104,7 @@ public class MinetestTextEntry extends Activity {
 	}
 	
 	public void cancelDialog() {
+		hideKeyboard();
 		setResult(Activity.RESULT_CANCELED);
 		mTextInputDialog.dismiss();
 		finish();
