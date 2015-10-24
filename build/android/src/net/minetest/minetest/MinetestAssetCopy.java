@@ -1,4 +1,4 @@
-package mobi.omegacentauri.minetest;
+package net.minetest.minetest;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE project [
+       <!ENTITY aapt-fix SYSTEM "aapt-fix.xml">
+]>
+
 <project name="Minetest" default="help">
+&aapt-fix;
 	<property file="local.properties" />
 	<property file="ant.properties" />
 	<property environment="env" />
