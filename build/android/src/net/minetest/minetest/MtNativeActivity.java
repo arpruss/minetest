@@ -81,6 +81,7 @@ public class MtNativeActivity extends NativeActivity {
 	}
 	
 	static {
+		System.loadLibrary("iconv");
 		System.loadLibrary("openal");
 		System.loadLibrary("ogg");
 		System.loadLibrary("vorbis");
