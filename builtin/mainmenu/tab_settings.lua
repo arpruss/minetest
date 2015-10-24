@@ -365,9 +365,9 @@ local function create_settings_formspec(tabview, name, tabdata)
 		formspec = formspec:sub(1, -2) -- remove trailing comma
 	end
 	formspec = formspec .. ";" .. selected_setting .. "]" ..
-			"button[4,4.5;3,1;btn_change_keys;".. fgettext("Change keys") .. "]" ..
-			"button[10,4.5;2,1;btn_edit;" .. fgettext("Edit") .. "]" ..
-			"button[7,4.5;3,1;btn_restore;" .. fgettext("Restore Default") .. "]" ..
+			"button[5,4.5;3,1;btn_change_keys;".. fgettext("Change keys") .. "]" ..
+			"button[11,4.5;2,1;btn_edit;" .. fgettext("Edit") .. "]" ..
+			"button[8,4.5;3,1;btn_restore;" .. fgettext("Restore Default") .. "]" ..
 			"checkbox[0,4.5;cb_tech_settings;" .. fgettext("Show technical names") .. ";"
 					.. dump(core.setting_getbool("main_menu_technical_settings")) .. "]"
 

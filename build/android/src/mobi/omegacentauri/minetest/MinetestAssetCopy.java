@@ -347,6 +347,9 @@ public class MinetestAssetCopy extends Activity
 				
 				/* if it's not a folder it's most likely a file */
 				boolean refresh = true;
+
+				if (new File(FlashPath+".override").exists())
+					continue;
 				
 				File testme = new File(FlashPath);
 				

@@ -24,7 +24,7 @@ local function get_formspec(tabview, name, tabdata)
 		"label[7.75,1.05;" .. fgettext("Name / Password :") .. "]" ..
 		"field[8,0.75;3.4,0.5;te_address;;" ..
 		core.formspec_escape(core.setting_get("address")) .. "]" ..
-		"field[11.25,0.75;1.3,0.5;te_port;;" ..
+		"field[11.25,0.75;2.3,0.5;te_port;;" ..
 		core.formspec_escape(core.setting_get("remote_port")) .. "]" ..
 		"checkbox[0,4.85;cb_public_serverlist;" .. fgettext("Public Serverlist") .. ";" ..
 		dump(core.setting_getbool("public_serverlist")) .. "]"
@@ -38,9 +38,9 @@ local function get_formspec(tabview, name, tabdata)
 		"button[10,4.9;2,0.5;btn_mp_connect;" .. fgettext("Connect") .. "]" ..
 		"field[8,1.95;2.95,0.5;te_name;;" ..
 		core.formspec_escape(core.setting_get("name")) .. "]" ..
-		"pwdfield[10.78,1.95;1.77,0.5;te_pwd;]" ..
-		"box[7.73,2.35;4.3,2.28;#999999]" ..
-		"textarea[8.1,2.4;4.26,2.6;;"
+		"pwdfield[10.78,1.95;2.77,0.5;te_pwd;]" ..
+		"box[7.73,2.35;5.3,2.28;#999999]" ..
+		"textarea[8.1,2.4;5.26,2.6;;"
 		
 	if tabdata.fav_selected ~= nil and
 		menudata.favorites[tabdata.fav_selected] ~= nil and

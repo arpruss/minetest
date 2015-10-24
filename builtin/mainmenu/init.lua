@@ -41,7 +41,7 @@ dofile(menupath .. DIR_DELIM .. "dlg_config_world.lua")
 dofile(menupath .. DIR_DELIM .. "tab_credits.lua")
 dofile(menupath .. DIR_DELIM .. "tab_mods.lua")
 dofile(menupath .. DIR_DELIM .. "tab_settings.lua")
-if PLATFORM ~= "Android" then
+if PLATFORM ~= "Androix" then
 	dofile(menupath .. DIR_DELIM .. "dlg_create_world.lua")
 	dofile(menupath .. DIR_DELIM .. "dlg_delete_mod.lua")
 	dofile(menupath .. DIR_DELIM .. "dlg_delete_world.lua")
@@ -69,7 +69,7 @@ local function init_globals()
 	gamedata.worldindex = 0
 
 
-	if PLATFORM ~= "Android" then
+	if PLATFORM ~= "Androix" then
 		menudata.worldlist = filterlist.create(
 			core.get_worlds,
 			compare_worlds,
@@ -120,11 +120,11 @@ local function init_globals()
 	end
 
 	-- Create main tabview
-	local tv_main = tabview_create("maintab",{x=12,y=5.2},{x=0,y=0})
-	if PLATFORM ~= "Android" then
+	local tv_main = tabview_create("maintab",{x=13,y=5.2},{x=0,y=0})
+	if PLATFORM ~= "Androix" then
 		tv_main:set_autosave_tab(true)
 	end
-	if PLATFORM ~= "Android" then
+	if PLATFORM ~= "Androix" then
 		tv_main:add(tab_singleplayer)
 		tv_main:add(tab_multiplayer)
 		tv_main:add(tab_server)
@@ -132,7 +132,7 @@ local function init_globals()
 		tv_main:add(tab_simple_main)
 	end
 	tv_main:add(tab_settings)
-	if PLATFORM ~= "Android" then
+	if PLATFORM ~= "Androix" then
 		tv_main:add(tab_texturepacks)
 	end
 	tv_main:add(tab_mods)
@@ -142,14 +142,14 @@ local function init_globals()
 
 	tv_main:set_fixed_size(false)
 
-	if not (PLATFORM == "Android") then
+	if not (PLATFORM == "Androix") then
 		tv_main:set_tab(core.setting_get("maintab_LAST"))
 	end
 	ui.set_default("maintab")
 	tv_main:show()
 
 	-- Create modstore ui
-	if PLATFORM == "Android" then
+	if PLATFORM == "Androix" then
 		modstore.init({x=12, y=6}, 3, 2)
 	else
 		modstore.init({x=12, y=8}, 4, 3)
