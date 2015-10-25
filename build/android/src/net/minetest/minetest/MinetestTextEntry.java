@@ -86,6 +86,7 @@ public class MinetestTextEntry extends Activity {
 				imm.showSoftInput(mTextInputWidget, InputMethodManager.SHOW_FORCED);
 			}
 		});
+		mTextInputDialog.setCanceledOnTouchOutside(true);
 		mTextInputDialog.show();
 	}
 

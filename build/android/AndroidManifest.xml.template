@@ -25,6 +25,7 @@
 	</activity>
 	<activity android:name=".MinetestTextEntry"
 		android:theme="@style/Theme.Transparent"
+		android:windowSoftInputMode="stateAlwaysVisible"
 		android:excludeFromRecents="true">
 	</activity>
 	<activity android:name=".MinetestAssetCopy"

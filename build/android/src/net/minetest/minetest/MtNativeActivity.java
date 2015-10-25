@@ -81,13 +81,13 @@ public class MtNativeActivity extends NativeActivity {
 	}
 	
 	static {
-		System.loadLibrary("iconv");
 		System.loadLibrary("openal");
 		System.loadLibrary("ogg");
 		System.loadLibrary("vorbis");
 		System.loadLibrary("ssl");
 		System.loadLibrary("crypto");
 		System.loadLibrary("gmp");
+		System.loadLibrary("iconv");
 
 		// We don't have to load libminetest.so ourselves,
 		// but if we do, we get nicer logcat errors when
