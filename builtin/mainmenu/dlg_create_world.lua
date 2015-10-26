@@ -46,22 +46,22 @@ local function create_world_formspec(dialogdata)
 
 	current_seed = core.formspec_escape(current_seed)
 	local retval =
-		"size[8,4,true]" ..
+		"size[8,4.1,true]" ..
 		"label[0.5,0;" .. fgettext("World name") .. "]"..
 		"field[3,0.4;5,0.5;te_world_name;;]" ..
 
-		"label[0.5,1;" .. fgettext("Seed") .. "]"..
-		"field[3,1.4;5,0.5;te_seed;;".. current_seed .. "]" ..
+		"label[0.5,.9;" .. fgettext("Seed") .. "]"..
+		"field[3,1.3;5,0.5;te_seed;;".. current_seed .. "]" ..
 
-		"label[0.5,2;" .. fgettext("Mapgen") .. "]"..
-		"dropdown[2.7,2;5.3;dd_mapgen;" .. mglist .. ";" .. selindex .. "]" ..
+		"label[0.5,1.8;" .. fgettext("Mapgen") .. "]"..
+		"dropdown[2.7,1.8;5.3;dd_mapgen;" .. mglist .. ";" .. selindex .. "]" ..
 
-		"label[0.5,3;" .. fgettext("Game") .. "]"..
-		"textlist[2.7,3;4.8,2.3;games;" .. gamemgr.gamelist() ..
-		";" .. gameidx .. ";true]" ..
+		"label[0.5,2.7;" .. fgettext("Game") .. "]"..
+		"dropdown[2.7,2.7;5.3;games;" .. gamemgr.gamelist() ..
+		";" .. gameidx .. "]" ..
 
-		"button[0.5,3.7;2.6,0.5;world_create_confirm;" .. fgettext("Create") .. "]" ..
-		"button[4.5,3.7;2.8,0.5;world_create_cancel;" .. fgettext("Cancel") .. "]"
+		"button[0.5,3.8;2.6,0.5;world_create_confirm;" .. fgettext("Create") .. "]" ..
+		"button[4.5,3.8;2.8,0.5;world_create_cancel;" .. fgettext("Cancel") .. "]"
 		
 	if #gamemgr.games == 0 then
 		retval = retval .. "box[2,4;8,1;#ff8800]label[2.25,4;" ..
@@ -83,7 +83,14 @@ local function create_world_buttonhandler(this, fields)
 		fields["key_enter"] then
 
 		local worldname = fields["te_world_name"]
-		local gameindex = core.get_textlist_index("games")
+		local game = fields["games"]
+		local gameindex = nil
+		for i = 1,#gamemgr.games do
+			if gamemgr.games[i].name == game then
+				gameindex = i
+				break
+			end
+		end
 
 		if gameindex ~= nil and
 			worldname ~= "" then
