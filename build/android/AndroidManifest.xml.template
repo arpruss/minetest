@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Modified 2015 Omega Centauri Software -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="net.minetest.minetest"
 	android:versionCode="###ANDROID_VERSION###"

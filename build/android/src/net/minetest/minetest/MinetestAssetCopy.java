@@ -1,3 +1,4 @@
+// Modified 2015 by Omega Centauri Software
 package net.minetest.minetest;
 
 import java.io.BufferedReader;
