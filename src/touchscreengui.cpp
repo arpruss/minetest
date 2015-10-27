@@ -630,6 +630,7 @@ void TouchScreenGUI::handleChangedButton(const SEvent &event)
 
 bool TouchScreenGUI::doubleTapDetection()
 {
+	if (g_settings->getBool("doubletap_place")) {
 	m_key_events[0].down_time = m_key_events[1].down_time;
 	m_key_events[0].x         = m_key_events[1].x;
 	m_key_events[0].y         = m_key_events[1].y;
@@ -648,6 +649,16 @@ bool TouchScreenGUI::doubleTapDetection()
 
 	if (distance >(20 + g_settings->getU16("touchscreen_threshold")))
 		return false;
+        }
+	else {
+	m_key_events[0].down_time = m_move_downtime;
+	m_key_events[0].x         = m_move_downlocation.X;
+	m_key_events[0].y         = m_move_downlocation.Y;
+
+	u32 delta = porting::getDeltaMs(m_key_events[0].down_time,getTimeMs());
+	if (delta > 300)
+		return false;
+	}
 
 	SEvent* translated = new SEvent();
 	memset(translated,0,sizeof(SEvent));

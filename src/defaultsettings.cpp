@@ -70,6 +70,7 @@ void set_default_settings(Settings *settings)
 	settings->setDefault("3d_paralax_strength", "0.025");
 	settings->setDefault("aux1_descends", "false");
 	settings->setDefault("doubletap_jump", "false");
+	settings->setDefault("doubletap_place", "false");
 	settings->setDefault("always_fly_fast", "true");
 	settings->setDefault("directional_colored_fog", "true");
 	settings->setDefault("tooltip_show_delay", "400");

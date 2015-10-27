@@ -13,7 +13,7 @@ PATHCFGFILE = path.cfg
 
 ROOT = $(shell pwd)
 
-GAMES_TO_COPY = minetest_game
+GAMES_TO_COPY = minetest_game carbone-ng
 MODS_TO_COPY =
 
 

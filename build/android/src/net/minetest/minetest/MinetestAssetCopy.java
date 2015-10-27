@@ -323,6 +323,7 @@ public class MinetestAssetCopy extends Activity
 				
 				if (isAssetFolder(current_path))
 				{
+					Log.v("Minetest","folder "+current_path);
 					/* store information and update gui */
 					m_Foldername = current_path;
 					publishProgress(0);
@@ -331,6 +332,7 @@ public class MinetestAssetCopy extends Activity
 					File current_folder = new File(FlashPath);
 					if (!current_folder.exists())
 					 {
+						Log.v("Minetest", "Creating");
 						if (!current_folder.mkdirs())
 						{
 							Log.e("MinetestAssetCopy","\t failed create folder: " +
