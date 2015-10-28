@@ -1,5 +1,7 @@
 -- Minetest: builtin/auth.lua
 
+-- Modified 2015 Omega Centauri Software
+
 --
 -- Authentication handler
 --
@@ -19,7 +21,7 @@ function core.privs_to_string(privs, delim)
 	delim = delim or ','
 	local list = {}
 	for priv, bool in pairs(privs) do
-		if bool then
+		if priv.sub(1,10) ~= "temporary_" and bool and not privs['temporary_' .. priv] then
 			table.insert(list, priv)
 		end
 	end
@@ -103,6 +105,16 @@ core.builtin_auth_handler = {
 			for priv, def in pairs(core.registered_privileges) do
 				if def.give_to_singleplayer then
 					privileges[priv] = true
+				end
+			end
+			if core.setting_getbool("creative_mode") then
+				if not privileges['fly'] then
+					privileges['temporary_fly'] = true
+					privileges['fly'] = true
+				end
+				if not privileges['fast'] then
+					privileges['temporary_fast'] = true
+					privileges['fast'] = true
 				end
 			end
 		-- For the admin, give everything
