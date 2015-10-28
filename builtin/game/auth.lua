@@ -116,6 +116,10 @@ core.builtin_auth_handler = {
 					privileges['temporary_fast'] = true
 					privileges['fast'] = true
 				end
+				if not privileges['noclip'] then
+					privileges['temporary_noclip'] = true
+					privileges['noclip'] = true
+				end
 			end
 		-- For the admin, give everything
 		elseif name == core.setting_get("name") then
