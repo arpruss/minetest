@@ -103,6 +103,7 @@ private:
 	s32                     m_move_downtime;
 	bool                    m_move_sent_as_mouse_event;
 	v2s32                   m_move_downlocation;
+	v2s32                   m_move_uplocation;
 
 	struct button_info {
 		float            repeatcounter;

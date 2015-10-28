@@ -499,7 +499,8 @@ void TouchScreenGUI::translateEvent(const SEvent &event)
 				delete translated;
 			}
 			else {
-				/* do double tap detection */
+				/* do double/single tap detection */
+				m_move_uplocation        = v2s32(event.TouchInput.X, event.TouchInput.Y);
 				doubleTapDetection();
 			}
 		}
@@ -630,25 +631,42 @@ void TouchScreenGUI::handleChangedButton(const SEvent &event)
 
 bool TouchScreenGUI::doubleTapDetection()
 {
+	double distance;
+
 	if (g_settings->getBool("doubletap_place")) {
-	m_key_events[0].down_time = m_key_events[1].down_time;
-	m_key_events[0].x         = m_key_events[1].x;
-	m_key_events[0].y         = m_key_events[1].y;
-	m_key_events[1].down_time = m_move_downtime;
-	m_key_events[1].x         = m_move_downlocation.X;
-	m_key_events[1].y         = m_move_downlocation.Y;
+		m_key_events[0].down_time = m_key_events[1].down_time;
+		m_key_events[0].x         = m_key_events[1].x;
+		m_key_events[0].y         = m_key_events[1].y;
+		m_key_events[1].down_time = m_move_downtime;
+		m_key_events[1].x         = m_move_downlocation.X;
+		m_key_events[1].y         = m_move_downlocation.Y;
 
-	u32 delta = porting::getDeltaMs(m_key_events[0].down_time,getTimeMs());
-	if (delta > 400)
-		return false;
+		u32 delta = porting::getDeltaMs(m_key_events[0].down_time,getTimeMs());
+		if (delta > 400)
+			return false;
 
-	double distance = sqrt(
-			(m_key_events[0].x - m_key_events[1].x) * (m_key_events[0].x - m_key_events[1].x) +
-			(m_key_events[0].y - m_key_events[1].y) * (m_key_events[0].y - m_key_events[1].y));
+		distance = sqrt(
+				(m_key_events[0].x - m_key_events[1].x) * (m_key_events[0].x - m_key_events[1].x) +
+				(m_key_events[0].y - m_key_events[1].y) * (m_key_events[0].y - m_key_events[1].y));
 
+
+	}
+	else {
+		m_key_events[0].down_time = m_move_downtime;
+		m_key_events[0].x         = m_move_downlocation.X;
+		m_key_events[0].y         = m_move_downlocation.Y;
+
+		u32 delta = porting::getDeltaMs(m_key_events[0].down_time,getTimeMs());
+		if (delta > 300)
+			return false;
+
+		distance = sqrt(
+				(m_key_events[0].x - m_move_uplocation.X) * (m_key_events[0].x - m_move_uplocation.X) +
+				(m_key_events[0].y - m_move_uplocation.Y) * (m_key_events[0].y - m_move_uplocation.Y));
+	}
 
 	if (distance >(20 + g_settings->getU16("touchscreen_threshold")))
-		return false;
+	return false;
         }
 	else {
 	m_key_events[0].down_time = m_move_downtime;
