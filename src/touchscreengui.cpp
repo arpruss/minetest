@@ -665,19 +665,6 @@ bool TouchScreenGUI::doubleTapDetection()
 				(m_key_events[0].y - m_move_uplocation.Y) * (m_key_events[0].y - m_move_uplocation.Y));
 	}
 
-	if (distance >(20 + g_settings->getU16("touchscreen_threshold")))
-	return false;
-        }
-	else {
-	m_key_events[0].down_time = m_move_downtime;
-	m_key_events[0].x         = m_move_downlocation.X;
-	m_key_events[0].y         = m_move_downlocation.Y;
-
-	u32 delta = porting::getDeltaMs(m_key_events[0].down_time,getTimeMs());
-	if (delta > 300)
-		return false;
-	}
-
 	SEvent* translated = new SEvent();
 	memset(translated,0,sizeof(SEvent));
 	translated->EventType               = EET_MOUSE_INPUT_EVENT;
