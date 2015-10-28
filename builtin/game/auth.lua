@@ -21,7 +21,7 @@ function core.privs_to_string(privs, delim)
 	delim = delim or ','
 	local list = {}
 	for priv, bool in pairs(privs) do
-		if priv.sub(1,10) ~= "temporary_" and bool and not privs['temporary_' .. priv] then
+		if priv:sub(1,10) ~= "temporary_" and bool and not privs['temporary_' .. priv] then
 			table.insert(list, priv)
 		end
 	end
