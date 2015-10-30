@@ -74,6 +74,9 @@ mouse_sensitivity (Mouse sensitivity) float 0.2
 #    If enabled, keymap_special1 instead of keymap_sneak is used for climbing down and descending.
 aux1_descends (Key use for climbing/descending) bool false
 
+#    Double-tapping places a block.
+doubletap_place (Double tap to place block) bool false
+
 #    Double-tapping the jump key toggles fly mode.
 doubletap_jump (Double tap jump for fly) bool false
 
