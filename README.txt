@@ -467,6 +467,9 @@ For details and rationale, see http://www.lua.org/license.html .
 
 Copyright (C) 1994-2008 Lua.org, PUC-Rio.
 
+Luasockets is lciensed under the same terms and is Copyright (c) Diego Nehab
+
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights

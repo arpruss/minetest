@@ -95,6 +95,8 @@ ifeq ($(TARGET_ARCH_ABI),x86)
 LOCAL_CFLAGS += -fno-stack-protector
 endif
 
+LOCAL_CFLAGS += -DLUA_USE_DLOPEN
+
 LOCAL_C_INCLUDES :=                               \
 		jni/src jni/src/sqlite                    \
 		jni/src/script                            \
@@ -341,7 +343,22 @@ LOCAL_SRC_FILES +=                                \
 		jni/src/lua/src/lundump.c                 \
 		jni/src/lua/src/lvm.c                     \
 		jni/src/lua/src/lzio.c                    \
-		jni/src/lua/src/print.c
+		jni/src/lua/src/print.c \
+		    jni/src/lua/src/luasocket-2.0.2/src/luasocket.c \
+		    jni/src/lua/src/luasocket-2.0.2/src/mime.c \
+			    jni/src/lua/src/luasocket-2.0.2/src/inet.c \
+				    jni/src/lua/src/luasocket-2.0.2/src/tcp.c \
+					    jni/src/lua/src/luasocket-2.0.2/src/udp.c \
+						    jni/src/lua/src/luasocket-2.0.2/src/except.c \
+							    jni/src/lua/src/luasocket-2.0.2/src/select.c \
+								    jni/src/lua/src/luasocket-2.0.2/src/usocket.c \
+									    jni/src/lua/src/luasocket-2.0.2/src/buffer.c \
+										    jni/src/lua/src/luasocket-2.0.2/src/auxiliar.c \
+											    jni/src/lua/src/luasocket-2.0.2/src/options.c \
+												    jni/src/lua/src/luasocket-2.0.2/src/timeout.c \
+													    jni/src/lua/src/luasocket-2.0.2/src/io.c \
+														    jni/src/lua/src/luasocket-2.0.2/src/unix.c
+
 
 # SQLite3
 LOCAL_SRC_FILES += deps/sqlite/sqlite3.c
