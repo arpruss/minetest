@@ -90,8 +90,8 @@ void set_default_settings(Settings *settings)
 	#endif
 
 	settings->setDefault("wanted_fps", "30");
-	settings->setDefault("fps_max", "60");
-	settings->setDefault("pause_fps_max", "20");
+	settings->setDefault("fps_max", "40");
+	settings->setDefault("pause_fps_max", "15");
 	// A bit more than the server will send around the player, to make fog blend well
 	settings->setDefault("viewing_range_nodes_max", "240");
 	settings->setDefault("viewing_range_nodes_min", "35");
@@ -125,11 +125,11 @@ void set_default_settings(Settings *settings)
 	settings->setDefault("cinematic_camera_smoothing", "0.7");
 	settings->setDefault("fast_move", "false");
 	settings->setDefault("invert_mouse", "false");
-	settings->setDefault("enable_clouds", "true");
+	settings->setDefault("enable_clouds", "false");
 	settings->setDefault("screenshot_path", ".");
 	settings->setDefault("view_bobbing_amount", "1.0");
 	settings->setDefault("fall_bobbing_amount", "0.0");
-	settings->setDefault("enable_3d_clouds", "true");
+	settings->setDefault("enable_3d_clouds", "false");
 	settings->setDefault("cloud_height", "120");
 	settings->setDefault("cloud_radius", "12");
 	settings->setDefault("menu_clouds", "true");
@@ -346,7 +346,7 @@ void set_default_settings(Settings *settings)
 	settings->setDefault("preload_item_visuals", "false");
 
 	settings->setDefault("viewing_range_nodes_max", "50");
-	settings->setDefault("viewing_range_nodes_min", "20");
+	settings->setDefault("viewing_range_nodes_min", "35");
 	settings->setDefault("inventory_image_hack", "false");
 
 	//check for device with small screen

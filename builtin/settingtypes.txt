@@ -139,17 +139,17 @@ serverlist_file (Serverlist file) string favoriteservers.txt
 
 #    Minimum wanted FPS.
 #    The amount of rendered stuff is dynamically set according to this.
-wanted_fps (Wanted FPS) int 30
+wanted_fps (Wanted FPS) int 25
 
 #    If FPS would go higher than this, limit it by sleeping.
 #    to not waste CPU power for no benefit.
-fps_max (Maximum FPS) int 60
+fps_max (Maximum FPS) int 40
 
 #    Maximum FPS when game is paused.
-pause_fps_max (FPS in pause menu) int 20
+pause_fps_max (FPS in pause menu) int 15
 
 #    The allowed adjustment range for the automatic rendering range adjustment.
-viewing_range_nodes_max (Viewing range maximum) int 160
+viewing_range_nodes_max (Viewing range maximum) int 60
 
 #    The allowed adjustment range for the automatic rendering range adjustment.
 viewing_range_nodes_min (View range minimum) int 35
