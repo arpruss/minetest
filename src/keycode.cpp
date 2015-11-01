@@ -315,8 +315,8 @@ KeyPress::KeyPress(const irr::SEvent::SKeyInput &in, bool prefer_character)
 		m_name.resize(MB_CUR_MAX+1, '\0');
 		int written = wctomb(&m_name[0], Char);
 		if(written < 0){
-			std::string hexstr = hex_encode((const char*)&Char, sizeof(Char));
-			errorstream<<"KeyPress: Unexpected multibyte character "<<hexstr<<std::endl;
+			//std::string hexstr = hex_encode((const char*)&Char, sizeof(Char));
+			//errorstream<<"KeyPress: Unexpected multibyte character "<<hexstr<<std::endl;
 		}
 	}
 }
